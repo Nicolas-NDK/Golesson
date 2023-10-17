@@ -1,0 +1,38 @@
+﻿@using Domain.Entities;
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Usuario> SignInManager
+@inject UserManager<Usuario> UserManager
+<ul class="navbar-nav mb-2 d-flex align-items-center">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item mr-1 mt-4">
+            <form asp-area="Identity" asp-action="Logout" asp-controller="Login" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="nav-link btn btn-link text-white btn-danger">Sair</button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a asp-action="TeacherIndex" asp-controller="Usuario" class="nav-link text-white">
+                <button type="button" class="btn btn-block btn-warning">
+                    Torne-se um professor
+                </button>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a asp-action="Index" asp-controller="Login" class="nav-link  text-white">
+                <button type="button" class="btn btn-block btn-success">
+                    Login
+                </button>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a asp-action="StudentIndex" asp-controller="Usuario" class="nav-link ml-0 text-white">
+                <button type="button" class="btn btn-block btn-info">
+                    Criar Nova Conta
+                </button>
+            </a>
+        </li>
+    }
+</ul>

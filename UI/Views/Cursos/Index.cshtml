@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Application.ViewModels.CursoViewModel>
+@{
+    ViewData["Titulo"] = "Cursos";
+}
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="card col-sm-3 m-4" style="max-width: 400px">
+                    <img src="~/Resources/Capas/@item.Capa" class="card-img-top" alt="curso" />
+                    <div class="card-body">
+                        <h3 class="card-text text-success">@item.NomeCurso</h3>
+                        <h5 class="card-text">@item.Criador</h5>
+                        <h5 class="card-text">@string.Format("{0:C}", item.Valor)</h5>
+                    </div>
+                    <div class="card-footer">
+                        <a asp-route-id="@item.Id" asp-action="Details" asp-controller="Cursos" class="btn btn-success">Saiba Mais</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            //Initialize Select2 Elements
+            $('.select2').select2()
+        })
+
+        $(document).ready(function () {
+            const maxLength = 590;
+
+            $('.card-footer').each(function () {
+                const contentText = $(this).find('p').text();
+
+                if (contentText.length > maxLength) {
+                    const trimmedText = contentText.slice(0, maxLength);
+
+                    $(this).find('p').text(`${trimmedText} [...]`);
+                }
+            });
+        });
+
+    </script>
+}

@@ -1,0 +1,41 @@
+﻿<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GoLesson</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="icon" href="~/lib/imagens/golesson.png" type="image/x-icon" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/UI.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="~/lib/admin-lte/css/adminlte.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
+    <link href="~/lib/star-rating/dist/star-rating.css" rel="stylesheet" />
+</head>
+<body class="sidebar-mini sidebar-collapse layout-navbar-fixed" style="height: auto;">
+    <div class="wrapper">
+        <partial name="_partialHeaderNavBar"  />
+        <partial name="_partialMenuAside" />
+        <div class="content-wrapper" style="min-height: 1542.4px;">
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            @RenderBody()
+        </div>
+        <partial name="_partialFooter" />
+    </div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/lib/admin-lte/js/adminlte.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="~/lib/inputmask/dist/jquery.inputmask.min.js"></script>
+<script src="~/lib/star-rating/dist/star-rating.js"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body> 
+</html>
